@@ -1,4 +1,9 @@
 
+<div class='mb-5'>
+  <h2>Your active group</h2>
+  <%= render partial: 'groups/group', object: current_user.active_group %>
+</div>
+
 <%= form_tag(dashboard_index_path, method: :get, class: 'max-w-md mt-5') do %>
   <%= label_tag('movie-search', 'Search', class: 'mb-2 text-sm font-medium text-gray-900 sr-only') %>
   <div class="relative">
