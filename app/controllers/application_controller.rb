@@ -34,6 +34,6 @@ class ApplicationController < ActionController::Base
   end
 
   def render_error_page(code)
-    render file: "#{Rails.root.join("public/#{code}.html")}", layout: false, status: code
+    render file: Rails.root.join("public/#{code}.html").to_s, layout: false, status: code
   end
 end
