@@ -12,7 +12,7 @@ module MovieCommands
     end
 
     def call
-      return unless imdb_id.present?
+      return if imdb_id.blank?
 
       group.movies.destroy(movie)
       movie
@@ -23,7 +23,7 @@ module MovieCommands
     private
 
     def movie
-      @movie ||= group.movies.find_by!(imdb_id: imdb_id)
+      @movie ||= group.movies.find_by!(imdb_id:)
     end
   end
 end

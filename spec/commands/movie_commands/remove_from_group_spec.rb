@@ -6,13 +6,13 @@ RSpec.describe MovieCommands::RemoveFromGroup do
   context 'when no movie with imdb_id' do
     it 'returns Movie' do
       response = command.call(imdb_id, group)
-      expect(response).to eq(false)
+      expect(response).to be(false)
     end
   end
 
   context 'when movie with imdb_id exists' do
     let(:other_id) { 'other_id' }
-    let(:movie) { create(:movie, imdb_id: imdb_id) }
+    let(:movie) { create(:movie, imdb_id:) }
     let!(:movie2) { create(:movie, imdb_id: other_id) }
 
     before do
@@ -32,12 +32,12 @@ RSpec.describe MovieCommands::RemoveFromGroup do
 
     it 'returns false if wrong imdb_id' do
       response = command.call('wrong', group)
-      expect(response).to eq(false)
+      expect(response).to be(false)
     end
 
     it 'returns false if movie not in group' do
       response = command.call(other_id, group)
-      expect(response).to eq(false)
+      expect(response).to be(false)
     end
   end
 end

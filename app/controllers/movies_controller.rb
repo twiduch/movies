@@ -3,6 +3,7 @@ class MoviesController < ApplicationController
 
   def add_movie
     movie = add_movie_to_active_group
+    async_update_movie_info(movie) if movie
 
     redirect_to controller: 'dashboard', action: 'index', anchor: params[:anchor], search: params[:search]
   end
@@ -21,5 +22,11 @@ class MoviesController < ApplicationController
 
   def remove_movie_from_active_group
     MovieCommands::RemoveFromGroup.call(params[:imdb_id], current_user.active_group)
+  end
+
+  def async_update_movie_info(movie)
+    Thread.new do
+      MovieCommands::UpdateMovie.call(movie)
+    end
   end
 end
