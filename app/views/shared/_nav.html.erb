@@ -11,6 +11,16 @@
     <div class="hidden w-full md:block md:w-auto" id="navbar-default">
       <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
         <li>
+          <%= link_to 'Dashboard', '',
+            class: nav_classes('dashboard')
+          %>
+        </li>
+        <li>
+          <%= link_to "Groups", '',
+            class: nav_classes('groups')
+          %>
+        </li>
+        <li>
           <div data-controller='select' class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"">
             <%= label(:user, :name, 'Select User', class: 'w-full mb-2 text-gray-900') %>
             <%= select(:user, :name, User.all.collect {|p| [ p.name, p.id ] }, { prompt: 'select user', selected: session[:user_id] },
