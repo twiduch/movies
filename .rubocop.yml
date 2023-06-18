@@ -6,7 +6,6 @@ AllCops:
   DisplayCopNames: true
   Exclude:
     - 'tmp/**/*'
-    - 'spec/**/*'
     - 'db/**/*'
     - 'bin/**/*'
     - 'vendor/**/*'
