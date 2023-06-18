@@ -13,4 +13,13 @@ module ApplicationHelper
     activate = action ? current_page?(controller:, action:) : controller_name == controller
     activate ? active : inactive
   end
+
+  def svg(name)
+    file_path = Rails.root.join("app/assets/images/#{name}.svg").to_s
+    if File.exist?(file_path)
+      File.read(file_path).html_safe
+    else
+      '(not found)'
+    end
+  end
 end
