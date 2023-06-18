@@ -16,6 +16,8 @@ AllCops:
     - 'Rakefile'
 Layout/LineLength:
   Max: 140
+Style/OpenStructUse:
+  Enabled: false
 Style/Documentation:
   Enabled: false
 Bundler/OrderedGems:

@@ -64,3 +64,6 @@ group :development do
   gem "solargraph"
 end
 
+group :test do
+  gem 'webmock'
+end
