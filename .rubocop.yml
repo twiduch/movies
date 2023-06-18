@@ -34,6 +34,8 @@ RSpec/ExampleLength:
   Max: 10
 RSpec/LetSetup:
   Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
 Lint/AmbiguousBlockAssociation:
   Exclude:
   - "spec/**/*"
