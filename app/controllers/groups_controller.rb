@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: %i[show edit update destroy]
+  before_action :authenticate_request
+  before_action :set_group, only: %i[show edit update destroy activate]
 
   # GET /groups or /groups.json
   def index
@@ -16,6 +17,12 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit; end
+
+  def activate
+    current_user.update(active_group: @group)
+
+    redirect_to action: :index
+  end
 
   # POST /groups or /groups.json
   def create

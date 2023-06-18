@@ -1,17 +1,35 @@
-<div id="<%= dom_id group %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
+<div id="<%= dom_id group %>"
+  class="block relative md:w-80 my-5 break-after-column p-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100"
+>
+  <% if active_group?(group) %>
+    <div class='w-4 h-auto absolute top-1 left-1'>
+      <%= svg 'check_box' %>
+    </div>
+  <% end %>
+
+  <p class="m-3 tracking-tight text-gray-900">
+    <strong class="text-bold font-medium">Name:</strong>
     <%= group.name %>
   </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
+  <p class="m-3 tracking-tight text-gray-900">
+    <strong class="block text-bold font-medium mb-1">Description:</strong>
     <%= group.description %>
   </p>
 
+  <p class="m-3">
+    <strong class="block font-medium mb-1">Movies:</strong>
+    <%= group.movies.count %>
+  </p>
+
   <% if action_name != "show" %>
-    <%= link_to "Show this group", group, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this group', edit_group_path(group), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
+    <%= link_to "Show", group, data: { 'turbo-frame': "_top" }, class: "rounded-lg py-2 px-4 bg-gray-300 inline-block font-small hover:bg-gray-400" %>
+    <%= link_to 'Change', edit_group_path(group), data: { 'turbo-frame': "_top" }, class: "rounded-lg py-2 px-4 bg-gray-300 inline-block font-small hover:bg-gray-400" %>
+    <% unless active_group?(group) %>
+      <%= button_to 'Activate', activate_group_path(group),
+        class: "rounded-lg py-2 px-4 font-small bg-gray-300 hover:bg-gray-400",
+        form_class: 'inline-block'
+      %>
+    <% end %>
   <% end %>
 </div>

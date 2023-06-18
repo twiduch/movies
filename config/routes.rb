@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :groups
   root 'public#index'
 
+  resources :groups do
+    post 'activate', on: :member
+  end
   resources :sessions, only: [:create]
   resources :dashboard, only: [:index]
 end
