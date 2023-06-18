@@ -1,0 +1,39 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+AllCops:
+  NewCops: enable
+  DisplayCopNames: true
+  Exclude:
+    - 'tmp/**/*'
+    - 'spec/**/*'
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'vendor/**/*'
+    - 'lib/tasks/**/*'
+    - '**/*.rake'
+    - 'config.ru'
+    - 'Gemfile'
+    - 'Rakefile'
+Layout/LineLength:
+  Max: 140
+Style/Documentation:
+  Enabled: false
+Bundler/OrderedGems:
+  Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+RSpec/ContextWording:
+  Enabled: false
+RSpec/NestedGroups:
+  Max: 5
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+RSpec/ExampleLength:
+  Max: 10
+RSpec/LetSetup:
+  Enabled: false
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+  - "spec/**/*"
