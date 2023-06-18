@@ -22,4 +22,11 @@ module ApplicationHelper
       '(not found)'
     end
   end
+
+  def proper_url?(url)
+    uri = URI.parse(url)
+    uri.is_a?(URI::HTTP)
+  rescue URI::InvalidURIError
+    false
+  end
 end
