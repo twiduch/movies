@@ -8,7 +8,9 @@ class GroupsController < ApplicationController
   end
 
   # GET /groups/1 or /groups/1.json
-  def show; end
+  def show
+    @movies = @group.movies
+  end
 
   # GET /groups/new
   def new
@@ -55,10 +57,15 @@ class GroupsController < ApplicationController
 
   # DELETE /groups/1 or /groups/1.json
   def destroy
-    @group.destroy
+    if @group.user.active_group == @group
+      msg = { alert: 'Cannot destroy active group.' }
+    else
+      @group.destroy
+      msg = { notice: 'Group was successfully destroyed.' }
+    end
 
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
+      format.html { redirect_to groups_url, msg }
       format.json { head :no_content }
     end
   end
