@@ -1,16 +1,28 @@
 require 'rails_helper'
 
 RSpec.describe 'groups/show' do
-  let(:group) { create(:group, :with_user) }
+  let(:user) { create(:user) }
 
-  before do
-    assign(:group, group)
-  end
+  context 'when showing active group, no movies' do
+    let(:group) { user.active_group }
 
-  it 'renders attributes in <p>' do
-    render
+    before do
+      assign(:group, group)
+      assign(:movies, group.movies)
 
-    expect(rendered).to match(/name/)
-    expect(rendered).to match(/description/)
+      allow(view).to receive(:current_user).and_return(user)
+    end
+
+    it 'renders Name' do
+      render
+
+      expect(rendered).to match(/Name.*#{group.name}/m)
+    end
+
+    it 'renders Description' do
+      render
+
+      expect(rendered).to match(/Description.*#{group.description}/m)
+    end
   end
 end

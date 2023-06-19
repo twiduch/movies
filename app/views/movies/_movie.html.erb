@@ -1,0 +1,30 @@
+<div id="<%= dom_id movie %>"
+  class="block relative lg:w-80 my-5 break-after-column p-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100"
+>
+
+  <% if proper_url?(movie.poster) %>
+    <%= image_tag(movie.poster, size: 150, class: 'my-5 lg:mx-auto') %>
+  <% else %>
+    <%= image_tag("blank", size: 150, class: 'my-5') %>
+  <% end %>
+
+  <p class="m-3 tracking-tight text-gray-900">
+    <strong class="text-bold font-medium">Title:</strong>
+    <%= movie.title %>
+  </p>
+
+  <p class="m-3 tracking-tight text-gray-900">
+    <strong class="text-bold font-medium">Year:</strong>
+    <%= movie.year %>
+  </p>
+
+  <p class="m-3 tracking-tight text-gray-900">
+    <strong class="text-bold font-medium">Plot:</strong>
+    <%= movie.plot %>
+  </p>
+
+  <p class="m-3 tracking-tight text-gray-900">
+    <strong class="text-bold font-medium">Type:</strong>
+    <%= movie.movie_type %>
+  </p>
+</div>
