@@ -1,5 +1,6 @@
-### Ruby version 
-3.2.2
+### Versions
+Ruby 3.2.2
+Rails 7.0.5
 
 ### Preparation
 Build images by running
