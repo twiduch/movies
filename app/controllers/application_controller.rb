@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  rescue_from ActiveRecord::RecordNotFound do |e|
+  rescue_from ActiveRecord::RecordNotFound, ActionController::UnknownFormat do |e|
     respond_to do |format|
       format.html { render_error_page(404) }
       format.json { render_error(e.message, 404) }
