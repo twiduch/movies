@@ -4,5 +4,4 @@ class User < ApplicationRecord
   belongs_to :active_group, class_name: 'Group'
 
   before_validation -> { build_active_group(name: 'Initial', user: self) }, on: :create
-  after_commit -> { active_group.save }, on: :create
 end

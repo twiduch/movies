@@ -4,7 +4,7 @@ RSpec.describe 'groups/show' do
   let(:user) { create(:user) }
 
   context 'when showing active group, no movies' do
-    let(:group) { user.active_group }
+    let(:group) { user.reload.active_group }
 
     before do
       assign(:group, group)

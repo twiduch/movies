@@ -2,6 +2,7 @@ RSpec.describe 'dashboard/index' do
   let(:user) { create(:user) }
 
   before do
+    user.reload
     allow(view).to receive(:current_user).and_return(user)
   end
 

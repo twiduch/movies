@@ -3,9 +3,10 @@ require 'rails_helper'
 RSpec.describe GroupMovie do
   let(:user) { create(:user) }
   let(:group) { user.active_group }
-  let(:movie) { create(:movie) }
+  let(:movie) { build(:movie) }
 
   before do
+    user.reload
     group.movies << movie
   end
 

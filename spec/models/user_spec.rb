@@ -6,6 +6,6 @@ RSpec.describe User do
   end
 
   it 'creates active group' do
-    expect(user.active_group).to be_persisted
+    expect(user.reload.active_group).to be_persisted
   end
 end
