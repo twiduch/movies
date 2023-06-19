@@ -5,8 +5,8 @@ RSpec.describe 'movies/_search_movie' do
 
   context 'when movie in active group' do
     before do
-      assign(:movie_imdb_ids, [movie_imdbID])
-      render partial: 'movies/search_movie', locals: {:search_movie => omdb_object}
+      assign(:movie_imdb_ids, [movie_imdb_id])
+      render partial: 'movies/search_movie', locals: { search_movie: omdb_object }
     end
 
     it 'displays Title' do
@@ -29,7 +29,7 @@ RSpec.describe 'movies/_search_movie' do
   context 'when movie not in active group' do
     before do
       assign(:movie_imdb_ids, [])
-      render partial: 'movies/search_movie', locals: {:search_movie => omdb_object}
+      render partial: 'movies/search_movie', locals: { search_movie: omdb_object }
     end
 
     it 'does not display svg mark' do

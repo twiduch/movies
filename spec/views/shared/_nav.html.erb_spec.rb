@@ -4,19 +4,14 @@ RSpec.describe 'shared/_nav' do
     expect(rendered).to match(/Select User/)
   end
 
-  it 'displays user selection' do
+  it 'displays Dashboard' do
     render
-    expect(rendered).to match(/href="\/dashboard"\>Dashboard/)
+    expect(rendered).to match(%r{href="/dashboard">Dashboard})
   end
 
-  it 'displays user selection' do
+  it 'displays Groups' do
     render
-    expect(rendered).to match(/href="\/groups"\>Groups/)
-  end
-
-  it 'displays user selection' do
-    render
-    expect(rendered).to match(/Select User/)
+    expect(rendered).to match(%r{href="/groups">Groups})
   end
 
   it 'displays app name' do

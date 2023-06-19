@@ -2,7 +2,7 @@ RSpec.describe 'movies/_movie' do
   let(:movie) { create(:movie) }
 
   before do
-    render partial: 'movies/movie', locals: {:movie => movie}
+    render partial: 'movies/movie', locals: { movie: }
   end
 
   it 'displays Title' do
