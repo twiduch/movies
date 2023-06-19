@@ -1,0 +1,7 @@
+<%= turbo_stream.update 'search-movie-list' do %>
+  <%= render partial: 'movies/search_movie', collection: @search_movie %>
+<% end %>
+
+<%= turbo_stream.update 'user-active-group' do %>
+  <%= render partial: 'groups/group', object: current_user.active_group %>
+<% end %>

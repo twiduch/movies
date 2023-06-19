@@ -1,17 +1,18 @@
 class MoviesController < ApplicationController
   before_action :authenticate_request
+  include MovieSearchable
 
   def add_movie
     movie = add_movie_to_active_group
     async_update_movie_info(movie) if movie
-
-    redirect_to controller: 'dashboard', action: 'index', anchor: params[:anchor], search: params[:search]
+    prepare_movie_searchable_variables
+    render 'dashboard_movies'
   end
 
   def remove_movie
     remove_movie_from_active_group
-
-    redirect_to controller: 'dashboard', action: 'index', anchor: params[:anchor], search: params[:search]
+    prepare_movie_searchable_variables
+    render 'dashboard_movies'
   end
 
   private

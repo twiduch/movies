@@ -1,7 +1,9 @@
 
 <div class='mb-5'>
   <h2>Your active group</h2>
-  <%= render partial: 'groups/group', object: current_user.active_group %>
+  <div id='user-active-group'>
+    <%= render partial: 'groups/group', object: current_user.active_group %>
+  </div>
 </div>
 
 <%= form_tag(dashboard_index_path, method: :get, class: 'max-w-md mt-5') do %>
@@ -13,6 +15,7 @@
     <%= search_field_tag('search', nil,
       class: 'block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500',
       placeholder: 'Search movie title',
+      value:params[:search],
       required: true
     ) %>
     <%= button_tag('Search',
@@ -21,6 +24,6 @@
   </div>
 <% end %>
 
-<div id="search_movie" class="min-w-full">
+<div id="search-movie-list" class="min-w-full">
   <%= render partial: 'movies/search_movie', collection: @search_movie %>
 </div>
